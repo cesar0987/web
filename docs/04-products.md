@@ -11,12 +11,37 @@ Usamos **Mongoose** (MongoDB) porque es extremadamente flexible para una ferrete
 ## Pasos Detallados
 
 ### 1. Definición del Modelo e Interfaces
-Crea el archivo `src/models/Product.ts`.
-- **Interface**: Definí un `interface IProduct` que extienda de `mongoose.Document`.
-- **Esquema**: Implementá el esquema usando la interfaz para tipado estricto.
+Crea el archivo `app/models/Product.ts` (o `src/models/Product.ts` si estás usando `src/`).
+- **Interface**: Definí un `interface IProduct` que incluya los campos `name`, `description`, `image`, `category`, `stock` y `tags`.
+- **Esquema**: Implementá el esquema con Mongoose y `timestamps: true`.
+
+Ejemplo:
+```ts
+import mongoose from 'mongoose';
+
+export interface IProduct {
+  name: string;
+  description: string;
+  image: string;
+  category: string;
+  stock: number;
+  tags?: string[];
+}
+
+const ProductSchema = new mongoose.Schema<IProduct>({
+  name: { type: String, required: true },
+  description: { type: String, required: false },
+  image: { type: String, required: false },
+  category: { type: String, required: true },
+  stock: { type: Number, required: true, min: 0 },
+  tags: { type: [String], required: false },
+}, { timestamps: true });
+
+export default mongoose.models.Product || mongoose.model('Product', ProductSchema);
+```
 
 ### 2. Creación del ProductoCard.tsx
-- Ubicación: `src/features/productos/ProductoCard.tsx`.
+- Ubicación: `app/features/productos/ProductoCard.tsx`.
 - **Tipado**: Definí `interface ProductCardProps` para los datos que recibe.
 
 ### 3. El Grid de Productos

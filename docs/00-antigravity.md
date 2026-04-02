@@ -10,8 +10,9 @@ Anclar el flujo de trabajo del proyecto a las reglas definidas en `.antigravity/
 4. `.antigravity/rules/mentor.md`       (cultura de peer review / coaching)
 
 ## Checklist rápido
-- [ ] Estructura: App Router + `src/` carpetas (`components`, `features`, `lib`, `models`, `hooks`)
-- [ ] Mongoose: esquemas con `timestamps: true` y validaciones estrictas
+- [x] Estructura: App Router + `src/` carpetas (`components`, `features`, `lib`, `models`, `hooks`)
+- [ ] Mongoose: esquemas con `timestamps: true` y validaciones estrictas (docs/04-products)
+- [ ] API: conexión singleton y endpoints en docs/06-api
 - [ ] UI: Navbar `fixed`, no dark mode, no precios en Homepage
 - [ ] Git: Conventional Commits + subject en inglés + <50 chars
 - [ ] Docs: cada milestone está reflejada en `docs/0X-*.md` y se vincula desde este documento
